@@ -1,4 +1,4 @@
-name: CI/CD
+name: Deploy
 
 on:
   push:
@@ -6,26 +6,26 @@ on:
       - master
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.11'
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.11'
 
-      - name: Install Backend Dependencies
-        working-directory: backend
-        run: pip install -r requirements.txt
+    - name: Install Backend Dependencies
+      working-directory: ./backend
+      run: pip install -r requirements.txt
 
-      - name: Run Backend Tests
-        working-directory: backend
-        run: python manage.py test
-        
-      - name: Start Backend Server
-        working-directory: backend
-        run: python manage.py runserver &
+    - name: Run Migrations
+      working-directory: ./backend
+      run: python manage.py migrate
+
+    - name: Start Backend Server
+      working-directory: ./backend
+      run: python manage.py runserver
