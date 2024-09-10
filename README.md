@@ -22,7 +22,15 @@ The Workflow Tool is a drag-and-drop flowchart application that allows users to 
 
 ## Setup Instructions
 
-1. **Clone the Repository**:
+Follow these steps to set up the project:
 
-   ```bash
-   git clone https://github.com/rezasrk1/workflow-tool.git
+| Step | Command/Action |
+|------|----------------|
+| 1. **Clone the Repository** | `git clone https://github.com/rezasrk1/workflow-tool.git` |
+| 2. **Navigate to the Frontend Directory** | `cd workflow-tool/frontend` |
+| 3. **Install Frontend Dependencies** | `npm install` |
+| 4. **Navigate to the Backend Directory** | `cd ../backend` |
+| 5. **Install Backend Dependencies** | `pip install -r requirements.txt` |
+| 6. **Run Migrations** | `python manage.py migrate` |
+| 7. **Start the Backend Server** | `python manage.py runserver` |
+| 8. **Start the Frontend Server** | `cd ../frontend`<br>`npm start` |
